@@ -11,3 +11,4 @@ requests.get("https://api.trace.moe/search?cutBorders&url={}".format(urllib.pars
 
 requests.get("https://api.trace.moe/search?anilistID=1&url={}".format(urllib.parse.quote_plus("https://images.plurk.com/32B15UXxymfSMwKGTObY5e.jpg"))).json()
 
+requests.get("https://api.trace.moe/search?anilistInfo&url={}".format(urllib.parse.quote_plus("https://images.plurk.com/32B15UXxymfSMwKGTObY5e.jpg"))).json()
