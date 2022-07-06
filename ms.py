@@ -4,10 +4,8 @@ import json
 # to get city input
 city = input()
 
+
 response = requests.get('https://api.teleport.org/api/cities/?search={}'.format(city))
-
-'''print(json.dumps(response.json(), indent=4))'''
-
 jsonObject = response.json()
 #_embedded: object
     #city:search-results : array
@@ -16,10 +14,10 @@ jsonObject = response.json()
                 #href : string
 
 # to get the geonameid
-'''if '_embedded' in jsonObject:
+if '_embedded' in jsonObject:
     if 'city:search-results' in jsonObject['_embedded']:
         if len(jsonObject['_embedded']['city:search-results']) > 1:
-            print(jsonObject['_embedded']['city:search-results'][0]['_links']['city:item']['href'][36:53])'''
+            print(jsonObject['_embedded']['city:search-results'][0]['_links']['city:item']['href'][36:53])
 
 #to get the correct city in mind
 p = jsonObject['_embedded']['city:search-results'][0]['_links']['city:item']['href'][46:53]
@@ -27,12 +25,8 @@ r = requests.get('https://api.teleport.org/api/cities/geonameid%3A{}'.format(p))
 
 # to get full name and population
 jsonObj2 = r.json()
-'''print(json.dumps(r.json(), indent=4))'''
-print(jsonObj2['full_name'])
-print(jsonObj2['population'])
-
-
-
+print('Full name:', jsonObj2['full_name'])
+print('Population:', jsonObj2['population'])
 
 
 # Get city input from user CHECK
