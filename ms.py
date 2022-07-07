@@ -20,11 +20,13 @@ def get_top_3_populations(DATABASE): # focus on convert_into_database
     # loop through database get top 3 populations
     # print top three populations 
     # <- new funciton(print populations)
+    print()
 
 def get_lower_3_populations(DATABASE):
     # loop through database get bottom 3 populations
     # print bottom three populations 
     # <- new funciton(print populations)
+    print()
 
 def select_choice():
     choice = str(input('Enter bottom or top'))
@@ -78,7 +80,7 @@ def getcities():
     while first_input != 'no':
         x = getcity()
         dictionary[x[0]] = x[1]
-        first_input = int(input('Do you want to add another city?(enter yes or no)'))
+        first_input = str(input('Do you want to add another city?(enter yes or no)'))
     return dictionary
 
 # Shove city name and population into database
@@ -94,7 +96,7 @@ if __name__ == '__main__':
     # to here and return database
     print('Do you want bottom three populations or top three populations')
     choice = select_choice
-    if choice[0] = 'top':
-        get_top_3_populations(NEW_DATABASE)
-    else:
-        get_lower_3_populations(NEW_DATABASE)
+    # if choice[0] = 'top':
+    #     get_top_3_populations(NEW_DATABASE)
+    # else:
+    #     get_lower_3_populations(NEW_DATABASE)
