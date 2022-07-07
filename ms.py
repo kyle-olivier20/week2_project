@@ -68,7 +68,8 @@ def print_cities():
 
 
 if __name__ == '__main__':
-    print('This Program finds the bottom three or bottom three city populations')
+    print('This Program finds the bottom three\
+    or bottom three city populations')
 
     # propbably could be made in anothre function from here
     getcities()
