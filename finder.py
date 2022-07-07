@@ -15,7 +15,8 @@ response = requests.get("https://hacker-news.firebase\
 io.com/v0/item/"+str(mostRecent)+".json?print=pretty")
 data = response.json()
 for i in range(int(mostRecent)-100, int(mostRecent)-1):
-    if data is not None and data['type'] == 'story' and 'title' in data and 'by' in data and 'url' in data:
+    if data is not None and data['type'] == 'story' \
+    and 'title' in data and 'by' in data and 'url' in data:
         # Adding as new row to dataframe
         df.loc[len(df.index)] = [data['title'], data['by'], data['url']]
         print("Added " + data['title'])
