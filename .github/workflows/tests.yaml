@@ -20,7 +20,7 @@ jobs:
           python3 -m unittest ms_tests.py
       - name: Check code coverage                        #new from here down
         run: |
-          python3 -m coverage run -m unittest test.py
+          python3 -m coverage run -m unittest ms_tests.py
           python3 -m coverage report
           python3 -m coverage html
           
