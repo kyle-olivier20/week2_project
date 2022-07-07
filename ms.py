@@ -4,7 +4,7 @@ import pandas as pd
 import sqlalchemy as db
 
 col_names = ['City', 'Population', 'geonameid']
-df  = pd.DataFrame(columns=col_names)
+df = pd.DataFrame(columns=col_names)
 
 
 def getcity():
@@ -16,11 +16,11 @@ def getcity():
     while i is not True:
         response = requests.get('https://api.teleport.org/api/cities/?search={}'.format(city))
         jsonObject = response.json()
-        #_embedded: object
-        #city:search-results : array
-        #_links: object
-        #city:item : object
-        #href : string
+        # _embedded: object
+        # city:search-results : array
+        # _links: object
+        # city:item : object
+        # href : string
         if '_embedded' in jsonObject:
             if 'city:search-results' in jsonObject['_embedded']:
                 if len(jsonObject['_embedded']['city:search-results']) > 0:
@@ -47,7 +47,7 @@ def getcity():
 # Parse for population CHECK
 # Parse for name CHECK
 # Display it to user CHECK
-# returns a list of 
+# returns a list of
 
 def getcities():
     first_input = 'yes'
