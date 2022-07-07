@@ -3,24 +3,24 @@ import json
 import pandas as pd
 import sqlalchemy as db
 
-col_names = ['City', 'Population','geonameid']
+col_names = ['City', 'Population', 'geonameid']
 df  = pd.DataFrame(columns = col_names)
 
 
-def getcity(): 
+def getcity():
     city = str(input("Enter City Name: "))
     p = ''
     n = ''
     pop = 0
     i = False
-    while i != True:
+    while i is not True:
         response = requests.get('https://api.teleport.org/api/cities/?search={}'.format(city))
         jsonObject = response.json()
         #_embedded: object
-            #city:search-results : array
-                #_links: object
-                    #city:item : object
-                        #href : string
+        #city:search-results : array
+        #_links: object
+        #city:item : object
+        #href : string
         if '_embedded' in jsonObject:
             if 'city:search-results' in jsonObject['_embedded']:
                 if len(jsonObject['_embedded']['city:search-results']) > 0:
@@ -55,11 +55,13 @@ def getcities():
         x = getcity()
         first_input = str(input('Do you want to add another city?(enter yes or no)'))
 
+        
 def print_cities():
     for i in range(len(df)):
         print(df.loc[i,:])
 # Shove city name and population into database
 # On request, give user top 5 populous cities
+
 
 if __name__ == '__main__':
     print('This Program finds the bottom three or bottom three city populations')
