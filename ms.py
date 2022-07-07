@@ -49,8 +49,8 @@ def getcity():
                     p = jsonObject['_embedded']['city:search-results'][0]['_links']['city:item']['href'][46:53]
                     r = requests.get('https://api.teleport.org/api/cities/geonameid%3A{}/'.format(p))
                     jsonObj2 = r.json()
-                    name = jsonObj2['full_name']
-                    population = jsonObj2['population']
+                    n = jsonObj2['full_name']
+                    pop = jsonObj2['population']
                     # consider taking the print statment out?
                     print('Full name:', name)
                     print('Population:', population)
