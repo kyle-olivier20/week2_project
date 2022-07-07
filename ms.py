@@ -5,10 +5,9 @@ import sqlalchemy as db
 
 def convert_into_database(dictionary):
     # taken from codio don't know how to use
-    engine = db.create_engine('sqlite:///data_base_name.db')
-    dataframe_name.to_sql('table_name', con=engine, 
-    if_exists='replace', index=False)
-    query_result = engine.execute("SELECT * FROM table;").fetchall()
+    engine = db.create_engine('sqlite:///cities.db')
+    dataframe_name.to_sql('cityname', con=engine, if_exists='replace', index=False)
+    query_result = engine.execute("SELECT * FROM cityname;").fetchall()
     print(pd.DataFrame(query_result))
     # convert dictionary to a DATABASE will need Jhermey or kyle kinda struggling 
     return 
@@ -51,7 +50,7 @@ def getcity():
                     r = requests.get('https://api.teleport.org/api/cities/geonameid%3A{}/'.format(p))
                     jsonObj2 = r.json()
                     name = jsonObj2['full_name']
-                    population =jsonObj2['population']
+                    population = jsonObj2['population']
                     # consider taking the print statment out?
                     print('Full name:', name)
                     print('Population:', population)
