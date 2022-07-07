@@ -4,13 +4,27 @@ import pandas as pd
 import sqlalchemy as db
 
 def convert_into_database(dictionary):
-    # convert dictionary to a DATABASE will need Jhermey 
+    # taken from codio don't know how to use
+    engine = db.create_engine('sqlite:///data_base_name.db')
+    dataframe_name.to_sql('table_name', con=engine, 
+    if_exists='replace', index=False)
+    query_result = engine.execute("SELECT * FROM table;").fetchall()
+    print(pd.DataFrame(query_result))
+    # convert dictionary to a DATABASE will need Jhermey or kyle kinda struggling 
+    return 
 
-def get_top_3_populations(DATABASE):
-    # loop through database get top 3 databases
+
+
+def get_top_3_populations(DATABASE): # focus on convert_into_database 
+                                     # this is easier
+    # loop through database get top 3 populations
+    # print top three populations 
+    # <- new funciton(print populations)
 
 def get_lower_3_populations(DATABASE):
     # loop through database get bottom 3 populations
+    # print bottom three populations 
+    # <- new funciton(print populations)
 
 def select_choice():
     choice = str(input('Enter bottom or top'))
@@ -38,6 +52,7 @@ def getcity():
                     jsonObj2 = r.json()
                     name = jsonObj2['full_name']
                     population =jsonObj2['population']
+                    # consider taking the print statment out?
                     print('Full name:', name)
                     print('Population:', population)
                     i = True
@@ -57,28 +72,29 @@ def getcity():
 # Display it to user CHECK
 # returns a list of 
 
+def getcities():
+    dictionary = {}
+    first_input = 'yes'
+    while first_input != 'no':
+        x = getcity()
+        dictionary[x[0]] = x[1]
+        first_input = int(input('Do you want to add another city?(enter yes or no)'))
+    return dictionary
 
 # Shove city name and population into database
 # On request, give user top 5 populous cities
 
 if __name__ == '__main__':
-    engine = db.create_engine('sqlite:///data_base_name.db')
-
     print('This Program finds the bottom three or bottom three city populations')
 
     # propbably could be made in anothre function from here
-    first_input = 'yes'
-    dictionary = {}
-    while first_input != 'no':
-        x = getcity()
-        dictionary[x[0]] = x[1]
-        first_input = int(input('Do you want to add another city?(enter yes or no)'))
+    population_dictionary = getcities()
+    NEW_DATABASE = convert_into_database(population_dictionary)
+
     # to here and return database
     print('Do you want bottom three populations or top three populations')
-
-    DATABASE = convert_into_database(dictionary)
     choice = select_choice
     if choice[0] = 'top':
-        get_top_3_populations(DATABASE)
+        get_top_3_populations(NEW_DATABASE)
     else:
-        get_lower_3_populations(DATABASE)
+        get_lower_3_populations(NEW_DATABASE)
