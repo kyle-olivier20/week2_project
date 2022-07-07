@@ -5,7 +5,7 @@ import pandas as pd
 col_names = ['Title', 'Author', 'Link']
 df  = pd.DataFrame(columns = col_names)
 
-#get most recent post ID
+# get most recent post ID
 response = requests.get("https://hacker-news.firebaseio.com/v0/maxitem.json?print=pretty")
 mostRecent = response.json()
 
