@@ -14,7 +14,8 @@ def getcity():
     pop = 0
     i = False
     while i is not True:
-        response = requests.get('https://api.teleport.org/api/cities/?search={}'.format(city))
+        response = requests.get('https://api.teleport\
+        .org/api/cities/?search={}'.format(city))
         jsonObject = response.json()
         # _embedded: object
         # city:search-results : array
