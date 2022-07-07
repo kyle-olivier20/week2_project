@@ -25,8 +25,8 @@ def getcity():
         if '_embedded' in jsonObject:
             if 'city:search-results' in jsonObject['_embedded']:
                 if len(jsonObject['_embedded']['city:search-results']) > 0:
-                    p = jsonObject['_embedded']['city:search-results'][0]\
-                    ['_links']['city:item']['href'][46:53]
+                    p = jsonObject['_embedded']['city:search\
+                        -results'][0]['_links']['city:item']['href'][46:53]
                     r = requests.get('https://api.teleport\
                     .org/api/cities/geonameid%3A{}/'.format(p))
                     jsonObj2 = r.json()
@@ -56,7 +56,8 @@ def getcities():
     first_input = 'yes'
     while first_input != 'no':
         x = getcity()
-        first_input = str(input('Do you want to add another city?(enter yes or no)'))
+        first_input = str(input('Do you want to add\
+        another city?(enter yes or no)'))
 
 
 def print_cities():
