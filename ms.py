@@ -4,7 +4,7 @@ import pandas as pd
 import sqlalchemy as db
 
 col_names = ['City', 'Population', 'geonameid']
-df  = pd.DataFrame(columns = col_names)
+df  = pd.DataFrame(columns=col_names)
 
 
 def getcity():
@@ -43,7 +43,7 @@ def getcity():
 # Parse for geonameid:NUM  CHECK
 # return geonameid:NUM CHECK
 # Get https://api.teleport.org/api/cities/geonameid%3ACITYID/ CHECK
-# %3AC is : 
+# %3AC is :
 # Parse for population CHECK
 # Parse for name CHECK
 # Display it to user CHECK
@@ -55,10 +55,10 @@ def getcities():
         x = getcity()
         first_input = str(input('Do you want to add another city?(enter yes or no)'))
 
-        
+
 def print_cities():
     for i in range(len(df)):
-        print(df.loc[i,:])
+        print(df.loc[i, :])
 # Shove city name and population into database
 # On request, give user top 5 populous cities
 
