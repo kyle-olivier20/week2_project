@@ -14,21 +14,20 @@ def getcity():
     pop = 0
     i = False
     while i is not True:
-        response = requests.get('https://api.teleport\
-        .org/api/cities/?search={}'.format(city))
+        url = 'https://api.teleport.org/api/cities/'
+        response = requests.get(url+'?search='+city)
         jsonObject = response.json()
         # _embedded: object
         # city:search-results : array
         # _links: object
         # city:item : object
         # href : string
+        object2 = jsonObject['_embedded']['city:search-results']
         if '_embedded' in jsonObject:
             if 'city:search-results' in jsonObject['_embedded']:
-                if len(jsonObject['_embedded']['city:search-results']) > 0:
-                    p = jsonObject['_embedded']['city:search\
-                        -results'][0]['_links']['city:item']['href'][46:53]
-                    r = requests.get('https://api.teleport\
-                    .org/api/cities/geonameid%3A{}/'.format(p))
+                if len(object2) > 0:
+                    p = object2[0]['_links']['city:item']['href'][46:53]
+                    r = requests.get(url+'geonameid%3A{}/'.format(p))
                     jsonObj2 = r.json()
                     n = jsonObj2['full_name']
                     pop = jsonObj2['population']
@@ -53,11 +52,11 @@ def getcity():
 # returns a list of
 
 def getcities():
+    strquest = 'Do you want to add another city?(enter yes or no)'
     first_input = 'yes'
     while first_input != 'no':
         x = getcity()
-        first_input = str(input('Do you want to add\
-        another city?(enter yes or no)'))
+        first_input = str(input(strquest))
 
 
 def print_cities():
@@ -68,8 +67,7 @@ def print_cities():
 
 
 if __name__ == '__main__':
-    print('This Program finds the bottom three\
-    or bottom three city populations')
+    print('This Program finds city populations')
 
     # propbably could be made in anothre function from here
     getcities()
