@@ -52,14 +52,16 @@ def getcity():
 # returns a list of
 
 def getcities():
-    strquest = 'Do you want to add another city?(enter yes or no)'
+    strquest = '\nDo you want to add another city?(enter yes or no)'
     first_input = 'yes'
     while first_input != 'no':
         x = getcity()
         first_input = str(input(strquest))
+    print()
 
 
 def print_cities():
+    print()
     for i in range(len(df)):
         print(df.loc[i, :])
 # Shove city name and population into database
